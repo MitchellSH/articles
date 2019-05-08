@@ -1,0 +1,9 @@
+body {
+  margin: 0;
+}
+
+.MuiAppBar-colorPrimary-11 {
+  color: #000 !important;
+  background-color: #fff !important;
+  box-shadow: none !important;
+}

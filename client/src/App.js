@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ButtonAppBar from "./components/ButtonAppBar";
+import Grid from '@material-ui/core/Grid'
+import EditArticleFormDialog from "./components/EditArticleFormDialog";
+import Icon from "@material-ui/core/Icon/Icon";
+import Card from "@material-ui/core/es/Card/Card";
+import CardContent from "@material-ui/core/es/CardContent/CardContent";
+import CardActions from "@material-ui/core/es/CardActions/CardActions";
+import Typography from "@material-ui/core/Typography/Typography";
+import Button from "@material-ui/core/es/Button/Button";
+import moment from 'moment';
 
 class App extends Component {
 
@@ -11,9 +21,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.allArticles();
+    this.all();
     if (!this.state.intervalIsSet) {
-      let interval = setInterval(this.allArticles, 1000);
+      let interval = setInterval(this.all, 1000);
       this.setState({ intervalIsSet: interval });
     }
   }
@@ -25,7 +35,7 @@ class App extends Component {
     }
   }
 
-  allArticles = () => {
+  all = () => {
     axios.get('/api/articles')
       .then(res => {
         this.setState({articles: res.data})
@@ -33,14 +43,7 @@ class App extends Component {
       .catch(err => console.log(err))
   };
 
-  addArticle = (title, content) => {
-    axios.post("/api/article/new", {
-      title: title,
-      content: content
-    });
-  };
-
-  deleteArticle = (id) => {
+  delete = (id) => {
     axios.delete("/api/article/" + id + "/remove");
   };
 
@@ -48,37 +51,32 @@ class App extends Component {
     const {articles} = this.state;
     return (
       <div>
-        <ul>
+        <ButtonAppBar/>
+        <Grid container>
           {articles.length <= 0
-            ? "NO ARTICLES FOUND"
+            ? <p style={{ padding: "10px", margin: "5px" }}>No Articles</p>
             : articles.map(dat => (
-              <li style={{ padding: "10px" }} key={dat._id}>
-                <span style={{ color: "gray" }}> id: </span> {dat._id} <br />
-                <span style={{ color: "gray" }}> title: </span> {dat.title} <br />
-                <span style={{ color: "gray" }}> content: </span> {dat.content} <br/>
-                <button onClick={() => this.deleteArticle(dat._id)}>
-                  Delete Article
-                </button>
-              </li>
+              <Card style={{ padding: "10px", margin: "5px", width: "100%" }} key={dat._id}>
+                <CardContent>
+                  <Typography color="textSecondary" gutterBottom>
+                    {moment(dat.createdAt).format('MMMM D, YYYY')}
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                    {dat.title}
+                  </Typography>
+                  <Typography component="p">
+                    {dat.content}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <EditArticleFormDialog article={{id: dat._id, title: dat.title, content: dat.content}}/>
+                  <Button color="default" aria-label="Add" onClick={() => this.delete(dat._id)}>
+                    <Icon>delete_icon</Icon>
+                  </Button>
+                </CardActions>
+              </Card>
             ))}
-        </ul>
-        <div style={{ padding: "10px" }}>
-          <input
-            type="text"
-            onChange={e => this.setState({ title: e.target.value })}
-            placeholder="add article title"
-            style={{ width: "200px" }}
-          />
-          <input
-            type="text"
-            onChange={e => this.setState({ content: e.target.value })}
-            placeholder="add article content"
-            style={{ width: "200px" }}
-          />
-          <button onClick={() => this.addArticle(this.state.title, this.state.content)}>
-            Add Article
-          </button>
-        </div>
+        </Grid>
       </div>
     );
   }
