@@ -53,7 +53,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
     
 * **Method**
 
-    `POST`
+    `PUT`
     
 * **Params**
 
@@ -68,10 +68,10 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
     
 * **Method**
 
-    `POST`
+    `DELETE`
     
 * **Params**
 
-    `id=[string]`
+    None
     
 
