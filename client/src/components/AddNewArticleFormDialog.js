@@ -33,9 +33,9 @@ export default class AddNewArticleFormDialog extends React.Component {
   render() {
     return (
       <div>
-        <Fab color="secondary" aria-label="Add" onClick={this.handleClickOpen}>
-          <Icon>add_icon</Icon>
-        </Fab>
+        <Button color="secondary" aria-label="Add" onClick={this.handleClickOpen}>
+          Add New Article
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
