@@ -1,6 +1,8 @@
 # Articles
 Standard CRUD app where the user can Create, Read, Update, and Delete articles using the MERN(MongoDB, Express, React, Node) development stack.
 
+User has the choice to use the below link to interact with the API using my UI or use the API Endpoints themselves to create their own app.
+
 View it live [here](https://articles-api-crud.herokuapp.com/).
 ## API Endpoints
 ### Create Article
@@ -12,7 +14,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
 
     `POST`
     
-* **URL Params**
+* **Params**
 
     `title=[string]`
     
@@ -27,7 +29,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
 
     `GET`
     
-* **URL Params**
+* **Params**
 
     None
     
@@ -40,7 +42,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
 
     `GET`
     
-* **URL Params**
+* **Params**
 
     None
     
@@ -53,7 +55,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
 
     `POST`
     
-* **URL Params**
+* **Params**
 
     `title=[string]`
     
@@ -68,7 +70,7 @@ View it live [here](https://articles-api-crud.herokuapp.com/).
 
     `POST`
     
-* **URL Params**
+* **Params**
 
     `id=[string]`
     
