@@ -62,16 +62,9 @@ exports.findOne = (req, res) => {
 
 // Update a article identified by the articleId in the request
 exports.update = (req, res) => {
-  // Validate Request
-  if(!req.body.content) {
-    return res.status(400).send({
-      message: "Article content can not be empty"
-    });
-  }
-
   // Find article and update it with the request body
   Article.findByIdAndUpdate(req.params.articleId, {
-    title: req.body.title || "Untitled Article",
+    title: req.body.title,
     content: req.body.content
   }, {new: true})
     .then(article => {

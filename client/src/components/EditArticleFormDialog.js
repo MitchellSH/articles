@@ -41,7 +41,6 @@ export default class EditArticleFormDialog extends React.Component {
         >
           <DialogTitle id="form-dialog-title">Edit Article</DialogTitle>
           <DialogContent>
-
             <TextField
               margin="normal"
               id="title"
