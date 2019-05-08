@@ -33,7 +33,7 @@ export default class AddNewArticleFormDialog extends React.Component {
   render() {
     return (
       <div>
-        <Button color="secondary" aria-label="Add" onClick={this.handleClickOpen}>
+        <Button color="inherit" aria-label="Add" onClick={this.handleClickOpen}>
           Add New Article
         </Button>
         <Dialog
