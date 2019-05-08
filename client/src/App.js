@@ -3,7 +3,6 @@ import axios from "axios";
 import ButtonAppBar from "./components/ButtonAppBar";
 import Grid from '@material-ui/core/Grid'
 import EditArticleFormDialog from "./components/EditArticleFormDialog";
-import Icon from "@material-ui/core/Icon/Icon";
 import Card from "@material-ui/core/es/Card/Card";
 import CardContent from "@material-ui/core/es/CardContent/CardContent";
 import CardActions from "@material-ui/core/es/CardActions/CardActions";
@@ -71,7 +70,7 @@ class App extends Component {
                 <CardActions>
                   <EditArticleFormDialog article={{id: dat._id, title: dat.title, content: dat.content}}/>
                   <Button color="default" aria-label="Add" onClick={() => this.delete(dat._id)}>
-                    <Icon>delete_icon</Icon>
+                    Delete
                   </Button>
                 </CardActions>
               </Card>
